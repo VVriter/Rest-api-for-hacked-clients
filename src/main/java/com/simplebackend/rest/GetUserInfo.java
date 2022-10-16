@@ -17,7 +17,7 @@ public class GetUserInfo {
     public @ResponseBody ResponseEntity<String> getUsrHwid(@PathVariable String user, @PathVariable String id) throws JSONException {
         User userInfo = new User(user, id);
 
-        if (userInfo.isUserPrecent()) {
+        if (userInfo.isUserPresent()) {
             JSONObject object = new JSONObject();
             object.put("username", userInfo.getAccountName());
             object.put("hwid", userInfo.getHwidId());

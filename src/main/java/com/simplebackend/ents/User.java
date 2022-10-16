@@ -1,7 +1,6 @@
 package com.simplebackend.ents;
 
 import com.simplebackend.Globals;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -21,27 +20,23 @@ public class User implements Globals {
         //TODO: sql request
     }
 
-    @Getter
     public String getAccountName() {
         return accountName;
     }
 
-    @Getter
     public String getHwidId() {
         return this.hwidId;
     }
 
-    @Getter
     public String getPass() {
         return pass;
     }
 
-    @Getter
     public Date getCreationDate() {
         return creationDate;
     }
 
-    public boolean isUserPrecent() {
+    public boolean isUserPresent() {
         String resp = getResponce(getLinkJust+"hwids/"+getAccountName()+"/"+getHwidId());
         System.out.println(resp);
         return Objects.equals(resp, "true");

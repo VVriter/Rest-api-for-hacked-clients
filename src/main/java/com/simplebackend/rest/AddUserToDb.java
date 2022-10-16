@@ -1,5 +1,6 @@
 package com.simplebackend.rest;
 
+import com.simplebackend.Globals;
 import com.simplebackend.ents.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,12 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.sql.*;
 
 @RestController
-public class AddUserToDb {
-    String url = "jdbc:mysql://sql11.freemysqlhosting.net:3306/sql11526819";
-    String username = "sql11526819";
-    String password = "7Ku964Wmci";
-
-
+public class AddUserToDb implements Globals {
     @GetMapping("db/add/{user}/{id}")
     public @ResponseBody ResponseEntity<String> getUsrHwid(@PathVariable String user, @PathVariable String id) {
         User usr = new User(user, id);
