@@ -37,13 +37,13 @@ public class User implements Globals {
     }
 
     public boolean isUserPresent() {
-        String resp = getResponce(getLinkJust+"hwids/"+getAccountName()+"/"+getHwidId());
+        String resp = getResponse(getLinkJust+"hwids/"+getAccountName()+"/"+getHwidId());
         System.out.println(resp);
         return Objects.equals(resp, "true");
     }
 
 
-    public String getResponce(String link) {
+    public String getResponse(String link) {
         try {
             return new Scanner(new URL(link).openStream(), "UTF-8").useDelimiter("\\A").next().toString();
         } catch (IOException e) {
