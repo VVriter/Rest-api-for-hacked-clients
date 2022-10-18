@@ -13,14 +13,14 @@ import java.sql.*;
 
 @RestController
 public class DataBaseTest implements Globals {
-    String query = "select * from users";
+    String query = "SELECT * FROM users";
 
     @GetMapping("/db/")
     public @ResponseBody ResponseEntity<String> getUsrHwid() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            return new ResponseEntity<>(e.toString(),HttpStatus.OK);
+            return new ResponseEntity<>(e.toString(),HttpStatus.FORBIDDEN);
         }
 
 
@@ -36,7 +36,7 @@ public class DataBaseTest implements Globals {
             return new ResponseEntity<>(jsonObject.toString(), HttpStatus.OK);
         } catch (SQLException | JSONException e) {
             e.printStackTrace();
-            return new ResponseEntity<>(e.toString(), HttpStatus.OK);
+            return new ResponseEntity<>(e.toString(), HttpStatus.FORBIDDEN);
         }
     }
 }

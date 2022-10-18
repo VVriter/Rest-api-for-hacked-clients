@@ -25,7 +25,7 @@ public class GetUserInfo {
             object.put("crdate", userInfo.getCreationDate().toString()); */
             return new ResponseEntity<>(object.toString(), HttpStatus.OK);
         } else
-            return new ResponseEntity<>("null",HttpStatus.OK);
+            return new ResponseEntity<>("null", HttpStatus.NOT_FOUND);
     }
 
 }

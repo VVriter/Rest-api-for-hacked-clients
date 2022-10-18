@@ -20,7 +20,7 @@ public class AddUserToDb implements Globals {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            return new ResponseEntity<>(e.toString(),HttpStatus.OK);
+            return new ResponseEntity<>(e.toString(),HttpStatus.FORBIDDEN);
         }
 
         try {
@@ -31,7 +31,7 @@ public class AddUserToDb implements Globals {
             return new ResponseEntity<>("All is ok", HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return new ResponseEntity<>(e.toString(), HttpStatus.OK);
+            return new ResponseEntity<>(e.toString(), HttpStatus.FORBIDDEN);
         }
     }
 }

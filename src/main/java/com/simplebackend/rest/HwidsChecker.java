@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -23,18 +24,18 @@ public class HwidsChecker implements Globals {
         try {
             getHwids = new JSONObject(getHwidsString());
         } catch (JSONException e) {
-            return new ResponseEntity<>("JsonException", HttpStatus.OK);
+            return new ResponseEntity<>("JsonException", HttpStatus.FORBIDDEN);
         }
 
         if (getHwids.has(user) && Objects.equals(getHwids.get(user), id))
             return new ResponseEntity<>("true", HttpStatus.OK);
         else
-            return new ResponseEntity<>("false", HttpStatus.OK);
+            return new ResponseEntity<>("false", HttpStatus.NOT_FOUND);
     }
 
     String getHwidsString() {
         try {
-            return new Scanner(new URL(getLinkJust+"db/").openStream(), "UTF-8").useDelimiter("\\A").next();
+            return new Scanner(new URL(getLinkJust+"db/").openStream(), StandardCharsets.UTF_8).useDelimiter("\\A").next();
         } catch (IOException e) {
             return "null";
         }
