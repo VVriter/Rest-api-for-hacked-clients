@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 @RestController
@@ -25,7 +26,7 @@ public class News implements Globals {
 
     public String getResponse(String link) {
         try {
-            return new Scanner(new URL(link).openStream(), "UTF-8").useDelimiter("\\A").next().toString();
+            return new Scanner(new URL(link).openStream(), StandardCharsets.UTF_8).useDelimiter("\\A").next().toString();
         } catch (IOException e) {
             return "null";
         }
